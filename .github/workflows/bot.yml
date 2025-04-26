@@ -25,7 +25,7 @@ jobs:
 
       - name: Run the Python script
         run: |
-          python your_script_name.py  # Run your Python file (replace with your filename)
+          python animebot.py  # Run your Python file (replace with your filename)
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}  # Use your secret BOT token
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}  # Use your secret Channel ID
