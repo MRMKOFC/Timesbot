@@ -1,1 +1,31 @@
+name: Auto Post Anime News
 
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # This means: run every 30 minutes
+  workflow_dispatch:  # Allow manual run too
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest  # Use latest Ubuntu OS
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Download your code from GitHub
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Use Python 3.x (latest version)
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Install all Python libraries from requirements.txt
+
+      - name: Run the Python script
+        run: |
+          python your_script_name.py  # Run your Python file (replace with your filename)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}  # Use your secret BOT token
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}  # Use your secret Channel ID
